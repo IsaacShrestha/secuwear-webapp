@@ -5,8 +5,23 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from .models import *
 from .forms import *
+from .serializers import *
+
+
+#import from rest_framework
+from rest_framework import viewsets
+
+def home(request):
+	return render(request, 'base.html', {})
+
+
 
 # Create your views here.
+class TemperatureViewSet(viewsets.ModelViewSet):
+	queryset = Temperature.objects.all()
+	serializer_class = TemperatureSerializer
+
+
 def temperature_list(request):
 	data = Temperature.objects.all()
 	return render(request, 'temperature_list.html', {'data': data})
