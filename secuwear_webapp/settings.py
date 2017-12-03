@@ -25,7 +25,7 @@ SECRET_KEY = 'to3!!#f5yl3+)im5-cu#9x8t&1ndvu$_hoo5lkhy(xz0@68an1'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -140,11 +140,11 @@ REST_FRAMEWORK = {
     'DEFAULT_METADATA_CLASS': 'rest_framework_json_api.metadata.JSONAPIMetadata',
     'DEFAULT_AUTHENTICATION_CLASSES': [
         #'api.rest_framework_config.CsrfExemptSessionAuthentication',
-        #'rest_framework.authentication.SessionAuthentication'
+        #'rest_framework.authentication.SessionAuthentication',
     ],
     'DEFAULT_PERMISSION_CLASSES': [
-        #'rest_framework.permissions.IsAuthenticated'
-        'rest_framework.permissions.AllowAny'
+        #'rest_framework.permissions.IsAuthenticated',
+        #'rest_framework.permissions.AllowAny'
     ],
     'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',)
 }
