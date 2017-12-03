@@ -34,10 +34,10 @@ class TemperatureViewSet(viewsets.ModelViewSet):
 
 	'''def create(self, request, *args, **kwargs):
 		print "Received request:"
-		time = request.POST.get('time')
+		#time = request.POST.get('time')
 		celsius = request.POST.get('celsius')
 		#print request.outerObject
-		print time
+		#print time
 		print celsius
 		return Response(status=status.HTTP_204_NO_CONTENT)
 	'''
@@ -54,9 +54,8 @@ def temperature_new(request):
 		
 		if form.is_valid():
 			temperature = form.save(commit=False)
-			time = form.cleaned_data['time']
 			celsius = form.cleaned_data['celsius']
-			print time
+			print celsius
 			temperature.save()
 
 

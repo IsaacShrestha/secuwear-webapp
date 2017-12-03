@@ -6,4 +6,4 @@ class TemperatureForm(forms.ModelForm):
 
 	class Meta:
 		model = Temperature
-		fields = ('time', 'celsius')
+		fields = ('celsius',)
