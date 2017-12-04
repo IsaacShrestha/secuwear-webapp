@@ -22,6 +22,8 @@ def home(request):
 
 
 # Create your views here.
+
+#Temperature
 class TemperatureViewSet(viewsets.ModelViewSet):
 	permission_classes = (AllowAny,)
 	queryset = Temperature.objects.all()
@@ -65,4 +67,29 @@ def temperature_new(request):
 		form = TemperatureForm()
 		
 	return render(request, 'temperature_edit.html', {'form': form})
+
+#Barometer
+class BarometerViewSet(viewsets.ModelViewSet):
+	permission_classes = (AllowAny,)
+	queryset = Barometer.objects.all()
+	serializer_class = BarometerSerializer
+
+
+def barometer_list(request):
+	data = Barometer.objects.all()
+	return render(request, 'barometer_list.html', {'data': data})
+
+
+#Illuminance
+class IlluminanceViewSet(viewsets.ModelViewSet):
+	permission_classes = (AllowAny,)
+	queryset = Illuminance.objects.all()
+	serializer_class = IlluminanceSerializer
+
+def illuminance_list(request):
+	data = Illuminance.objects.all()
+	return render(request, 'illuminance_list.html', {'data': data})
+
+
+
    

@@ -25,3 +25,44 @@ class Temperature(models.Model):
 class TemperatureAdmin(admin.ModelAdmin):
 	list_display = ('time','celsius')
 
+
+class Barometer(models.Model):
+	time = models.DateTimeField(auto_now_add=True)
+	pressure = models.CharField(max_length=200)
+	altitude = models.CharField(max_length=200)
+
+	def __self__(self):
+		return self.pressure
+
+	def __unicode__(self):
+		return self.pressure
+
+	class Meta:
+		verbose_name_plural = "barometer"
+
+	class JSONAPIMeta:
+		resource_name = "barometer"
+
+class BarometerAdmin(admin.ModelAdmin):
+	list_display = ("time", "pressure", "altitude")
+
+
+class Illuminance(models.Model):
+	time = models.DateTimeField(auto_now_add=True)
+	illuminance = models.CharField(max_length=200)
+
+	def __self__(self):
+		return self.illuminance
+
+	def __unicode__(self):
+		return self.illuminance
+
+	class Meta:
+		verbose_name_plural = "Illuminance"
+
+	class JSONAPIMeta:
+		resource_name = "Illuminance"
+
+class IlluminaceAdmin(admin.ModelAdmin):
+	list_display = ("time", "illuminance")
+

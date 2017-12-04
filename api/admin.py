@@ -6,3 +6,5 @@ from .models import *
 
 # Register your models here.
 admin.site.register(Temperature)
+admin.site.register(Barometer)
+admin.site.register(Illuminance)
