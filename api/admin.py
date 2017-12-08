@@ -8,3 +8,4 @@ from .models import *
 admin.site.register(Temperature)
 admin.site.register(Barometer)
 admin.site.register(Illuminance)
+#admin.site.register(Event)

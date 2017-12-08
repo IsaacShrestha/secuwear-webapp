@@ -8,6 +8,7 @@ router=routers.DefaultRouter(trailing_slash=False)
 router.register(r'temperature', views.TemperatureViewSet)
 router.register(r'barometer', views.BarometerViewSet)
 router.register(r'illuminance', views.IlluminanceViewSet)
+#router.register(r'event', views.EventViewSet)
 
 urlpatterns = [
 	#url(r'^$',views.home, name='home'),

@@ -15,6 +15,9 @@ from rest_framework import viewsets
 from rest_framework.permissions import *
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.views import APIView
+
+import time, datetime
 
 def home(request):
 	return render(request, 'base.html', {})
@@ -89,6 +92,40 @@ class IlluminanceViewSet(viewsets.ModelViewSet):
 def illuminance_list(request):
 	data = Illuminance.objects.all()
 	return render(request, 'illuminance_list.html', {'data': data})
+
+'''
+#For events testing
+
+class EventViewSet(viewsets.ViewSet):
+	permission_classes = (AllowAny,)
+	queryset = Event.objects.all()
+	serializer_class = EventSerializer
+
+	@method_decorator(csrf_exempt)
+	#def post(sefl, request, *args, **kwargs): posts the data and here create posts it too
+	def create(self, request, *args, **kwargs):
+		receivedTime = request.POST.get('clocktimedifference') #unicode
+
+		eventType = request.POST.get('eventtype')
+		event = request.POST.get('event')
+		codereference = request.POST.get('codereference')
+		domain = request.POST.get('domain')
+		currentTime = time.time()
+		rTime = (float(receivedTime)/1000)
+		clocktimedifference = (rTime - currentTime)
+
+		newEvent = Event(clocktimedifference=clocktimedifference, eventtype=eventType, event=event, codereference=codereference, domain=domain)
+		newEvent.save()
+
+		return Response(status=status.HTTP_204_NO_CONTENT)
+	
+'''
+
+
+
+
+
+
 
 
 

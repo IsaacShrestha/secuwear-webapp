@@ -66,3 +66,37 @@ class Illuminance(models.Model):
 class IlluminaceAdmin(admin.ModelAdmin):
 	list_display = ("time", "illuminance")
 
+'''
+class Event(models.Model):
+	created = models.DateTimeField(auto_now_add=True)
+	updated = models.DateTimeField(auto_now=True)
+	clocktimedifference = models.CharField(max_length=200, blank=True)
+	eventtype = models.CharField(max_length=200, blank=True)
+	event = models.CharField(max_length=200, blank=True)
+	codereference = models.TextField(blank=True)
+	domain = models.CharField(max_length=200)
+	#run = models.CharField(max_length=100)
+
+	def __self__(self):
+		return self.eventtype
+
+	def __unicode__(self):
+		return self.eventtype
+
+	class Meta:
+		verbose_name_plural = "Event"
+
+	class JSONAPIMeta:
+		resource_name = "Event"
+
+
+class EventAdmin(admin.ModelAdmin):
+	list_display = ("created", "updated", "clocktimedifference", "event", "eventtype")
+'''
+
+
+
+
+
+
+

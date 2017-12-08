@@ -17,3 +17,9 @@ class IlluminanceSerializer(serializers.HyperlinkedModelSerializer):
 		model = Illuminance
 		fields = ('time', 'illuminance')
 
+'''
+class EventSerializer(serializers.HyperlinkedModelSerializer):
+	class Meta:
+		model = Event
+		fields = ('created', 'updated', 'clocktimedifference', 'eventtype', 'event', 'codereference', 'domain', 'run')
+'''
