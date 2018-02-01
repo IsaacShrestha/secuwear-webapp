@@ -26,6 +26,7 @@ SECRET_KEY = 'to3!!#f5yl3+)im5-cu#9x8t&1ndvu$_hoo5lkhy(xz0@68an1'
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
+DATA_UPLOAD_MAX_NUMBER_FIELDS = None
 
 
 # Application definition
@@ -124,7 +125,7 @@ STATIC_URL = '/static/'
 
 
 REST_FRAMEWORK = {
-    'PAGE_SIZE': 1000,
+    'PAGE_SIZE': 5000,
     'EXCEPTION_HANDLER': 'rest_framework_json_api.exceptions.exception_handler',
     'DEFAULT_PAGINATION_CLASS':
         'rest_framework_json_api.pagination.PageNumberPagination',

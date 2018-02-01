@@ -23,6 +23,9 @@ import time, datetime
 import httplib2
 import urllib
 
+
+#Global URL
+URL = "http://192.168.0.5:4000/api/events"
 def home(request):
 	return render(request, 'base.html', {})
 
@@ -50,12 +53,13 @@ class TemperatureViewSet(viewsets.ModelViewSet):
 		print celsius
 		return Response(status=status.HTTP_204_NO_CONTENT)
 	'''
-
+@csrf_exempt
 def temperature_list(request):
+	
 	'''
 	POST to secuwear server start
 	'''
-	strUrl = "http://192.168.0.3:4000/api/events"
+	strUrl = URL
 	systemTime = time.time()
 	systemTimeMS = (systemTime * 1000) #converting to systemTime to MS
 	datatoSecuWear = {'systemTime': systemTimeMS, 'eventtype': "call to api/temperature", 'event':"temperature_list() function triggered", 'codereference':"api/views.py: line 54", 'domain': "WebApp", 'run' :"1" }
@@ -65,9 +69,11 @@ def temperature_list(request):
 	response, content = h.request(strUrl, headers=headers, method="POST", body=body)
 	'''
 	POST to secuwear server end
-	'''
+	''' 
+
 	data = Temperature.objects.all()
 	return render(request, 'temperature_list.html', {'data': data})
+
 
 @csrf_exempt
 def temperature_new(request):
@@ -89,6 +95,7 @@ def temperature_new(request):
 		
 	return render(request, 'temperature_edit.html', {'form': form})
 
+
 #Barometer
 class BarometerViewSet(viewsets.ModelViewSet):
 	permission_classes = (AllowAny,)
@@ -97,10 +104,11 @@ class BarometerViewSet(viewsets.ModelViewSet):
 
 
 def barometer_list(request):
+	data = Barometer.objects.all()
 	'''
 	POST to secuwear server start
 	'''
-	strUrl = "http://192.168.0.3:4000/api/events"
+	strUrl = URL
 	systemTime = time.time()
 	systemTimeMS = (systemTime * 1000) #converting to systemTime to MS
 	datatoSecuWear = {'systemTime': systemTimeMS, 'eventtype': "call to api/barometer", 'event':"barometer_list() function triggered", 'codereference':"api/views.py: line 98", 'domain': "WebApp", 'run' :"1" }
@@ -111,7 +119,7 @@ def barometer_list(request):
 	'''
 	POST to secuwear server end
 	'''
-	data = Barometer.objects.all()
+	
 	return render(request, 'barometer_list.html', {'data': data})
 
 
@@ -122,10 +130,11 @@ class IlluminanceViewSet(viewsets.ModelViewSet):
 	serializer_class = IlluminanceSerializer
 
 def illuminance_list(request):
+	data = Illuminance.objects.all()
 	'''
 	POST to secuwear server start
 	'''
-	strUrl = "http://192.168.0.3:4000/api/events"
+	strUrl = URL
 	systemTime = time.time()
 	systemTimeMS = (systemTime * 1000) #converting to systemTime to MS
 	datatoSecuWear = {'systemTime': systemTimeMS, 'eventtype': "call to api/illuminance", 'event':"illuminance_list() function triggered", 'codereference':"api/views.py: line 122", 'domain': "WebApp", 'run' :"1" }
@@ -136,7 +145,7 @@ def illuminance_list(request):
 	'''
 	POST to secuwear server end
 	'''
-	data = Illuminance.objects.all()
+	
 	return render(request, 'illuminance_list.html', {'data': data})
 
 '''

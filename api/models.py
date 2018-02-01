@@ -8,7 +8,7 @@ from django.contrib import admin
 
 class Temperature(models.Model):
 	time = models.DateTimeField(auto_now_add=True)
-	celsius = models.CharField(max_length=200)
+	celsius = models.CharField(max_length=1000)
 
 	def __self__(self):
 		return self.time

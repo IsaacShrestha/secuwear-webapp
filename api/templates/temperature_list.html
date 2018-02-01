@@ -6,8 +6,14 @@
 			<div class="row">
 				<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
 					<a href="{% url 'temperature_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span>ADD</a>
-						
-						
+					<form method="POST" action="">
+						<input type="date" name="startTime" />
+						<input type="date" name="endTime" />
+						<input type="submit" name="Search Temperature" />
+					</form>
+
+
+					<p style="height: 50px;">&nbsp;</p>
 					
 				
 					<table class="table">
@@ -20,8 +26,8 @@
 					  <tbody>
 					  	{% for temperature in data %}
 						    <tr>
-						      <td>{{ temperature.time }}</td>
-						      <td>{{ temperature.celsius }}</td>
+						      <td>{{ temperature.time | safe }}</td>
+						      <td>{{ temperature.celsius | safe }}</td>
 						    </tr>
 						{% endfor %}
 					  </tbody>
